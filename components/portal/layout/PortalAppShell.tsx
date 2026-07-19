@@ -510,18 +510,7 @@ export function PortalAppShell({
     if (page === activePage) {
       return;
     }
-    if (page === "fnb-cafe" || (page.startsWith("fnb-") && getFnbSubIndustrySlug(pathname, page) === "cafe")) {
-      window.location.href = process.env.NEXT_PUBLIC_CAFE_URL || "https://omnia-cafe-web.vercel.app";
-      return;
-    }
-    if (page === "hris" || page.startsWith("hris-")) {
-      window.location.href = process.env.NEXT_PUBLIC_HRIS_URL || "https://omnia-hris-web.vercel.app";
-      return;
-    }
-    if (page === "clinic-dashboard" || page.startsWith("clinic-")) {
-      window.location.href = process.env.NEXT_PUBLIC_CLINIC_URL || "https://omnia-clinic-web.vercel.app";
-      return;
-    }
+    // SSO Handoff is handled by resolveVerticalTarget in a useEffect listening to pathname changes
 
     if (contentLoadingTimer.current) {
       window.clearTimeout(contentLoadingTimer.current);
